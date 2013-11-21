@@ -1,0 +1,22 @@
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes.dex : \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin$1.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin$2.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin$3.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin$4.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin$5.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin$6.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin$7.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin$8.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\NfcPlugin.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\nfc\plugin\Util.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\Alniyat.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\BuildConfig.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$attr.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$drawable.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$string.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$xml.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\api\Dummy.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\batterystatus\BatteryListener$1.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\batterystatus\BatteryListener.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\dexedLibs\cordova-3.1.0-1e0d44be1a662560c4d82558e09ca4fd.jar \

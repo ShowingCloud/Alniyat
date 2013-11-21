@@ -1,43 +1,431 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd">
 <html>
     <head>
         <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <meta name="viewport"  content="width=device-width" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+			//提示信息
+			function showMyAlert(text) {
+				$.mobile.loadingMessageTextVisible = true;
+				$.mobile.showPageLoadingMsg("a", text, true);
+			}
+			
+			function myAlert(text) {
+				showMyAlert(text);
+				setTimeout(hideLoading, 2000);
+			}
+			
+			function hideLoading() {
+				$.mobile.hidePageLoadingMsg();
+			}
+			
+			function exitApp() {
+				navigator.app.exitApp();
+			}
+		</script>
+        <script type="text/javascript">
+		
+			$(function () {
+				document.addEventListener('deviceready', myDeviceready, false);
+				$(document).on("pageinit","#indexPage",function(){
+					//swipe left change pange
+					$(this).on("swipeleft",function(){
+						$.mobile.changePage("#leftPage", { transition: "slide", changeHash: false });
+					}); 
+					//swipe right change pange
+					$(this).on("swiperight",function(){
+						$.mobile.changePage("#rightPage", { transition: "slide", changeHash: false });
+					}); 
+				});
+				
+				$(document).on("pageinit","#leftPage",function(){
+					$(this).on("swiperight",function(){
+						$.mobile.changePage("#indexPage", { transition: "slide", changeHash: false });
+					});                       
+				});
+				
+				$(document).on("pageinit","#rightPage",function(){
+					$(this).on("swipeleft",function(){
+						$.mobile.changePage("#indexPage", { transition: "slide", changeHash: false });
+					});                       
+				});
+			})
+			
+			function myDeviceready() {
+				/*
+				$(document).on("pageshow","#indexPage",function(){
+					//swipe left change pange
+					$(this).on("swipeleft",function(){
+						$.mobile.changePage("#leftPage", { transition: "slideup", changeHash: false });
+					}); 
+					//swipe right change pange
+					$(this).on("swiperight",function(){
+						$.mobile.changePage("#rightPage", { transition: "slidedown", changeHash: false });
+					}); 
+				});
+				
+				$(document).on("pageshow","#leftPage",function(){
+					$(this).on("swiperight",function(){
+						$.mobile.changePage("#indexPage", { transition: "slideup", changeHash: false });
+					});                       
+				});
+				
+				$(document).on("pageshow","#rightPage",function(){
+					$(this).on("swipeleft",function(){
+						$.mobile.changePage("#indexPage", { transition: "slideup", changeHash: false });
+					});                       
+				});
+				
+				if ($.mobile.activePage.is('#indexPage')) {
+					$(this).on("swipeleft",function(){
+							$.mobile.changePage("#leftPage", { transition: "slideup", changeHash: false });
+					}); 
+					$(this).on("swiperight",function(){
+							$.mobile.changePage("#rightPage", { transition: "slideup", changeHash: false });
+					});  
+				}else if($.mobile.activePage.is('#leftPage')){
+					$(this).on("swiperight",function(){
+							$.mobile.changePage("#indexPage", { transition: "slideup", changeHash: false });
+					}); 
+				}else{
+					$(this).on("swipeleft",function(){
+							$.mobile.changePage("#indexPage", { transition: "slideup", changeHash: false });
+					}); 
+				}*/
+				// registered back button listener
+				document.addEventListener('backbutton', myBackbutton, false);
+			}
+			
+			function myBackbutton() {
+				
+				if ($.mobile.activePage.is('#indexPage')) {
+					myAlert('clicked once again exit!');
+					document.removeEventListener('backbutton', myBackbutton, false);
+					document.addEventListener('backbutton', exitApp, false);
+					//3 second later register again
+					var intervalID = window.setTimeout(function() { 
+						window.clearTimeout(intervalID);
+						document.removeEventListener('backbutton', exitApp, false);
+						document.addEventListener('backbutton', myBackbutton, false);
+					}, 3000);
+				} else {
+					navigator.app.backHistory();
+				}
+			}
+			
+		</script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+		<title>PhoneGap NFC Test</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        <div data-role="page" id="indexPage">
+			<div data-role="header" data-theme="a" data-position="fixed">
+				<a href="#leftPage" data-icon="arrow-l" data-iconpos="notext"></a>
+				<h1>Entrance Guard</h1>
+				<a href="#rightPage" data-icon="arrow-r" data-iconpos="notext" ></a>
+			</div><!--/header-->
+			
+			<div data-role="content" data-theme="c">
+				<p>please put the NFC tags or stickers on the back near the phone</p>
+				<img src="img/read_nfc_tag.png" />
+			</div><!--/index page content-->
+			
+			<div data-role="footer" data-mini="true" data-position="fixed">
+				<div data-role="navbar" > 
+					<ul>
+						<li><a href="#" data-icon="grid">Summary</a></li> 
+						<li><a href="#" data-icon="star">Favs</a></li> 
+						<li><a href="#" data-icon="gear">Setup</a></li> 
+						<li><a href="#" data-icon="edit">Edit</a></li> 
+					</ul> 
+				</div>
+			</div><!--/footer-->
+		</div><!--/index page-->
+			
+		<div data-role="page" id="leftPage">
+			<div data-role="header" data-theme="a" data-position="fixed">
+				<h1>Entrance Guard</h1>
+			</div><!--/header-->
+			
+			<div data-role="content" data-theme="b" data-inset="true">
+				<section class="gallery">
+					<ul class="gallery-entries clearfix">	
+						<li class="gallery-item">
+							<a href="#"><img src="img/unlock.png"/>
+							<h3>Unlock</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-setup"><img src="img/setup.png"/>
+							<h3>Setup</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-user-infor"><img src="img/search-user.png"/>
+							<h3>User</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-user-detection"><img src="img/search-detection.png"/>
+							<h3>Detection</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-user-records"><img src="img/search-records.png"/>
+							<h3>Records</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-change-mode"><img src="img/setup-mode.png"/>
+							<h3>Mode</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-exception" data-rel="dialog"><img src="img/error.png"/>
+							<h3>Exception</h3>
+							</a>
+						</li>
+					</ul>
+				</section>
+			</div><!--/left page content-->
+			
+			<div data-role="footer" data-mini="true" data-position="fixed">
+				<div data-role="navbar" > 
+					<ul>
+						<li><a href="#" data-icon="grid">Summary</a></li> 
+						<li><a href="#" data-icon="star">Favs</a></li> 
+						<li><a href="#" data-icon="gear">Setup</a></li> 
+						<li><a href="#" data-icon="edit">Edit</a></li> 
+					</ul> 
+				</div>
+			</div><!--/footer-->
+		</div><!--left page-->
+		
+		<div data-role="page" id="rightPage">
+			<div data-role="header" data-theme="a" data-position="fixed">
+				<h1>Entrance Guard</h1>
+			</div><!--/header-->
+			<div data-role="content" data-theme="c">
+				<ul data-role="listview" data-inset="true" data-theme="a" >
+					<li>
+						<a href="#">
+							<img src="img/unlock.jpg" alt="unlock"  />
+							<h2>Unlock</h2>
+							<p>Using NFC opened the door</p>
+						</a>
+					</li>
+					<li>
+						<a href="#user-search" data-rel="popup" data-position-to="window" data-transition="pop">
+							<img src="img/search.jpg" alt="search"  />
+							<h2>Search</h2>
+							<p>search yourself opened the door counts and the time limit</p>
+						</a>
+					</li>
+					<li>
+						<a href="#user-exception" data-rel="popup" data-position-to="window" data-transition="pop">
+							<img src="img/exception.jpg" alt="exception"  />
+							<h2>Exception</h2>
+							<p> The abnormal state of alert</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--/right page content-->
+			
+			<div data-role="popup" id="user-search" data-theme="e" data-overlay-theme="d"  class="ui-content" style="max-width:90%; padding-bottom:0.5em;">
+				<h3>Details:</h3>
+				<table id="userTable" style="width:100%; text-align:center;" border="1" >
+					<caption>Open door counts and the time limit</caption>  
+					<tr>  
+						<th style="width:40%">Counts</th>  
+						<th style="width:60%">Time Limit</th>  
+					</tr>  
+					<tr>  
+						<td >100 times</td>  
+						<td >06:00~22:00</td>  
+					</tr> 
+				</table>
+				
+				<!--data-rel="back" 表示返回，前面的连接不起作用-->
+				<a href="#rightPage" data-role="button"  data-icon="delete" data-iconpos="left" data-inline="true" data-mini="true"  data-theme="b">Cancel</a>
+			</div>
+			
+			<div data-role="popup" id="user-exception" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+				<h3>Exception</h3>
+				<p>The abnormal state of alert!</p>
+				
+				<!--data-rel="back" 表示返回，前面的连接不起作用-->
+				<a href="#rightPage" data-role="button" data-rel="back" data-inline="true" data-mini="true"  data-theme="b">Cancel</a>
+			</div>
+			
+			<div data-role="footer" data-mini="true" data-position="fixed">
+				<div data-role="navbar" > 
+					<ul>
+						<li><a href="#" data-icon="grid">Summary</a></li> 
+						<li><a href="#" data-icon="star">Favs</a></li> 
+						<li><a href="#" data-icon="gear">Setup</a></li> 
+						<li><a href="#" data-icon="edit">Edit</a></li> 
+					</ul> 
+				</div>
+			</div><!--/footer-->
+		</div><!--right page-->
+		
+		
+		<!-- 管理员异常对话框-->
+		<div data-role="page" id="admin-exception" data-theme="b" data-overlay-theme="b" style="padding-top:30%">
+			<div data-role="header">
+				<h1>Exception</h1>
+			</div>
+			<div data-role="content">
+				<p>The dialog box is different from a normal page, 
+					it is displayed on top of the current page with a dark background color. 
+					It will not span the entire width of the page. 
+					The dialog has an icon of "X" in the header to close the box.
+				</p>
+				<a href="#leftPage" data-role="button" data-icon='back' data-theme="b" data-inline="true" data-mini="true">Back</a>
+			</div>
+		</div>
+		
+		<!-- 管理员设置-->
+		<div data-role="page" id="admin-setup" >
+			<div data-role="header" data-theme="b">
+				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
+				<h1>Setup</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<form >
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>User Types:</legend>
+							<select name="select-user" id="select-user" multiple="multiple" data-native-menu="false" data-icon="grid" data-iconpos="left" > 
+								<option>Choose a few options:</option> 
+								<optgroup label="User"> 
+									<option value="phoneUser" selected="">Phone user</option> 
+									<option value="passwdUser">Password user</option> 
+									<option value="cardUser">Card user</option> 
+								</optgroup> 
+							</select>
+						<fieldset/>
+					</div>
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>Unlock Counts:</legend>
+							<input type="number" id="unlock-counts" name="unlock-counts" value="0"/>
+						<fieldset/>
+					</div>
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>Time Limit:</legend>
+							<input type="time" id="start-time" name="start-time" value="00:00"/>
+							<label for="end-time">To:</label>
+							<input type="time" id="end-time" name="end-time" value="23:00"/>
+						<fieldset/>
+					</div>
+					<button name="submit" id="submit" data-inline="true">Submit</button>
+					<button name="reset" id="reset" data-inline="true">Reset</button>
+				</form>
+			</div>
+		</div>
+		<!-- 管理员查询用户信息-->
+		<div data-role="page" id="admin-user-infor" >
+			<div data-role="header" data-theme="b">
+				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
+				<h1>Information</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<table id="adminUserTable" style="width:100%; text-align:center;" border="1" >
+					<caption>All users information</caption>  
+					<tr> 
+						<th style="width:20%">Type</th> 
+						<th style="width:20%">ID</th>
+						<th style="width:30%">Counts</th>  
+						<th style="width:30%">Time Limit</th>  
+					</tr>  
+					<tr>  
+						<td >Phone</td>  
+						<td >10acd05</td>
+						<td >100 times</td>  
+						<td >06:00~22:00</td>  
+					</tr> 
+				</table>
+			</div>
+		</div>
+		
+		<!-- 管理员查询用户信息-->
+		<div data-role="page" id="admin-user-records" >
+			<div data-role="header" data-theme="b">
+				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
+				<h1>Records</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<table id="adminUserTable" style="width:100%; text-align:center;" border="1" >
+					<caption>User in and out records</caption>  
+					<tr>
+						<th style="width:30%">ID</th>
+						<th style="width:30%">Status</th> 
+						<th style="width:40%">Time</th> 
+					</tr>  
+					<tr>  
+						<td >10acd05</td>  
+						<td >Out</td>
+						<td >09:25</td>  
+					</tr> 
+				</table>
+			</div>
+		</div>
+		
+		<!-- 管理员查询用户信息-->
+		<div data-role="page" id="admin-user-detection" >
+			<div data-role="header" data-theme="b">
+				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
+				<h1>Detection</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<table id="adminUserTable" style="width:100%; text-align:center;" border="1" >
+					<caption>The entrance guard status</caption>  
+					<tr>
+						<th style="width:30%">Battery</th>
+						<th style="width:40%">Temperature</th> 
+						<th style="width:30%">Voltage</th> 
+					</tr>  
+					<tr>  
+						<td >80%</td>  
+						<td >5 c</td>
+						<td >10 v</td>  
+					</tr> 
+				</table>
+			</div>
+		</div>
+		
+		<!-- 管理员异常对话框-->
+		<div data-role="page" id="admin-change-mode" data-theme="b" data-overlay-theme="b" style="padding-top:30%" data-inset="true">
+			<div data-role="header">
+				<h1>Mode</h1>
+			</div>
+			<div data-role="content" data-theme="e">
+				<fieldset data-role="controlgroup"> 
+					<legend>Change Mode:</legend> 
+						<input name="radio-mode" id="mode1" value="mode1" checked="checked" type="radio"> 
+						<label for="mode1">Mode1</label> 
+						<input name="radio-mode" id="mode2" value="mode2"  type="radio"> 
+						<label for="mode2">Mode2</label>
+						<input name="radio-mode" id="mode3" value="mode3"  type="radio"> 
+						<label for="mode3">Mode3</label> 
+						<input name="radio-mode" id="mode4" value="mode4"  type="radio"> 
+						<label for="mode4">Mode4</label> 
+						<input name="radio-mode" id="mode5" value="mode5"  type="radio"> 
+						<label for="mode5">Mode5</label> 
+				</fieldset>
+				<a href="#" data-role="button" data-icon='check'  data-inline="true" data-mini="true">Ok</a>
+				<a href="#leftPage" data-role="button" data-icon='delete' data-theme="b" data-inline="true" data-mini="true">Cancel</a>
+			</div>
+		</div>
+		
     </body>
 </html>
