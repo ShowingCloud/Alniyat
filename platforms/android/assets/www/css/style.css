@@ -53,3 +53,10 @@
 /*	text-decoration:underline; */
 	text-align:center;
 }
+/*½â¾ö jqmobileÇÐ»»ÉÁÆÁ
+.ui-page {  
+	backface-visibility: hidden;  
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+} 
+*/

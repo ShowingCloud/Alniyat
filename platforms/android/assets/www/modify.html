@@ -1,0 +1,755 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport"  content="width=device-width" />
+		<meta http-equiv='Content-Type' content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css">
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<style type="text/css">
+            #unlock .ui-icon{
+                background:url(img/test.png) 50% 50% no-repeat;	
+				background-size: 18px 22px;
+            }
+			/* 显示 div */ 
+			.showMe{
+				display: block;
+			}
+
+			/* 隐藏 div */ 
+			.hideMe{
+				display: none;
+			}
+			.imgPanel{
+				position:absolute; 
+				z-index:1; 
+			}
+			.contentPanel{
+				position:absolute; 
+				z-index:2; 
+			}
+        </style>
+		<title>PhoneGap 门禁</title>
+    </head>
+    <body>
+        <div data-role="page" id="indexPage" data-theme="a" >
+			
+			<div data-role="header"  data-position="fixed">
+				<h1>门禁</h1>
+			</div><!--/header-->
+			<div id='loadImg' class="imgPanel"><image id="myImg" src="img/newyork.jpg"/></div>
+			<div data-role="content"  id="indexContent" class='contentPanel hideMe'>
+				<p style="color:#FC0">请把NFC的标签或贴纸放在NFC手机设备背面附近</p>
+				<img src="img/title1.png" style="padding-top:40%; padding-bottom:60%;" />
+                <a href="#" id="unlock" data-role="button" data-icon="custom" >开锁</a>
+			</div><!--/index page content-->
+            
+			<div data-role="footer" data-mini="true" data-position="fixed" data-id="unifiedFooter">
+				<div data-role="navbar" > 
+					<ul>
+						<li><a href="#" id="admin" data-icon="grid">管理员</a></li>
+						<li><a href="#" id="user" data-icon="star">用户</a></li> 
+						<li><a href="#" id="setup" data-icon="gear">设置</a></li> 
+						<li><a href="#" id="exit" data-icon="delete">退出</a></li> 
+					</ul> 
+				</div>
+			</div><!--/footer-->
+		</div><!--/index page-->
+        
+        <!--用户界面-->
+        <div data-role="page" id="userPage" >
+			<div data-role="header" data-theme="b" data-position="fixed">
+            	<a href="#indexPage" data-icon="back" data-iconpos="notext" ></a>
+				<h1>用户</h1>
+			</div>
+			<div data-role="content" data-theme="c" id="userContent">
+				<ul data-role="listview" data-inset="true" data-theme="c" >
+					<li>
+						<a href="#userInfo" data-rel="dialog" data-position-to="window" >
+							<img src="img/search-records.png" alt="search"  />
+							<h2>开门时限</h2>
+							<p>查询开门的时间限制</p>
+						</a>
+					</li>
+					<li>
+						<a href="#detectionInfo" data-rel="dialog" data-position-to="window" >
+							<img src="img/search-detection.png" alt="exception"  />
+							<h2>门锁信息</h2>
+							<p>门锁的检测信息</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--/right page content-->
+        </div>
+		<!--管理员界面-->
+        <div data-role="page" id="adminPage" >
+			<div data-role="header" data-theme="b" data-position="fixed">
+            	<a href="#indexPage" data-icon="back" data-iconpos="notext" ></a>
+				<h1>管理员</h1>
+			</div>
+			<div data-role="content" data-theme="c" id="adminContent">
+				<ul data-role="listview" data-inset="true" data-theme="c" >
+					<li>
+						<a href="#allUserInfo">
+							<img src="img/search-user.png" alt="search"  />
+							<h2>用户信息</h2>
+							<p>查询所有用户信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="#detectionInfo" data-rel="dialog" data-position-to="window">
+							<img src="img/search-detection.png" alt="exception"  />
+							<h2>门锁信息</h2>
+							<p>门锁的检测信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="#userRecords">
+							<img src="img/search-records.png" alt="search"  />
+							<h2>开门记录</h2>
+							<p>查询用户进出记录信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="#exceptionInfo">
+							<img src="img/error.png" alt="search"  />
+							<h2>异常信息</h2>
+							<p>查询所有非法异常开门的记录信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="#setupUser">
+							<img src="img/setup.png" alt="search"  />
+							<h2>用户设置</h2>
+							<p>设置用户以及开门时间限制</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--/right page content-->
+        </div>
+		
+        <!--门锁信息-->
+        <div data-role="dialog" id="detectionInfo"  data-theme="e" data-overlay-theme="e" style="padding-top:20%">
+            <div data-role="header" data-theme="b">
+                <h1>门锁信息</h1>
+            </div>
+            <div data-role="content" data-inset="true" data-theme="e">
+                <table id="detectionTable" style="width:100%; text-align:center;" border="1" >
+                    <caption>门禁信息状态</caption>  
+                    <tr>
+                        <th style="width:30%">电量</th>
+                        <th style="width:40%">温度</th> 
+                        <th style="width:30%">电压</th> 
+                    </tr>  
+                    <tr>  
+                        <td >80%</td>  
+                        <td >5度</td>
+                        <td >10伏特</td>  
+                    </tr> 
+                </table>
+        	</div>
+        </div>
+		
+		<!--用户个人信息-->
+        <div data-role="dialog" id="userInfo"  data-theme="e" data-overlay-theme="e" style="padding-top:20%">
+            <div data-role="header" data-theme="b">
+                <h1>个人信息</h1>
+            </div>
+            <div data-role="content" data-inset="true" data-theme="e">
+                <table id="userTable" style="width:100%; text-align:center;" border="1" >
+                    <caption>开门时限</caption>  
+                    <tr>
+                        <th style="width:50%">起始时间</th>
+                        <th style="width:50%">终止时间</th> 
+                    </tr>  
+                    <tr>  
+                        <td >06:00</td>  
+                        <td >22:00</td>
+                    </tr> 
+                </table>
+        	</div>
+        </div>
+		<!--所有用户信息-->
+        <div data-role="page" id="allUserInfo"  data-theme="e" >
+            <div data-role="header" data-theme="b">
+				<a href="#adminPage" data-icon="back" data-iconpos="notext" ></a>
+                <h1>所有用户信息</h1>
+            </div>
+            <div data-role="content" data-inset="true" data-theme="e">
+                <table id="allUserTable" style="width:100%; text-align:center;" border="1" >
+                    <caption>用户信息</caption>  
+                    <tr>
+						<th style="width:34%">编号</th>
+                        <th style="width:33%">起始时间</th>
+                        <th style="width:33%">终止时间</th> 
+                    </tr>  
+                    <tr>
+						<td >786a4ef</td>  
+                        <td >06:00</td>  
+                        <td >22:00</td>
+                    </tr> 
+                </table>
+        	</div>
+        </div>
+		<!--用户开门记录信息-->
+        <div data-role="page" id="userRecords"  data-theme="e" >
+            <div data-role="header" data-theme="b">
+				<a href="#adminPage" data-icon="back" data-iconpos="notext" ></a>
+                <h1>用户开门记录</h1>
+            </div>
+            <div data-role="content" data-inset="true" data-theme="e">
+                <table id="recordsTable" style="width:100%; text-align:center;" border="1" >
+                    <caption>开门记录</caption>  
+                    <tr>
+						<th style="width:50%">编号</th>
+                        <th style="width:50%">时间</th>
+                    </tr>  
+                    <tr>
+						<td >786a4ef</td>  
+                        <td >08:30</td> 
+                    </tr> 
+                </table>
+        	</div>
+        </div>
+		<!--开门异常信息-->
+        <div data-role="page" id="exceptionInfo"  data-theme="e" >
+            <div data-role="header" data-theme="b">
+				<a href="#adminPage" data-icon="back" data-iconpos="notext" ></a>
+                <h1>异常开门信息</h1>
+            </div>
+            <div data-role="content" data-inset="true" data-theme="e">
+                <table id="exceptionTable" style="width:100%; text-align:center;" border="1" >
+                    <caption>异常信息</caption>  
+                    <tr>
+						<th style="width:50%">序号</th>
+                        <th style="width:50%">时间</th>
+                    </tr>  
+                    <tr>
+						<td >1</td>  
+                        <td >08:30</td> 
+                    </tr> 
+					<tr>
+						<td >2</td>  
+                        <td >10:30</td> 
+                    </tr> 
+                </table>
+        	</div>
+        </div>
+		<!--设置用户和开门时限-->
+        <div data-role="page" id="setupUser"  data-theme="e" >
+			<div data-role="header" data-theme="b">
+				<a href="#adminPage" data-icon="back" data-iconpos="notext" ></a>
+				<h1>设置</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<form >
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>用户类型：</legend>
+							<select name="select-user" id="select-user" multiple="multiple" data-native-menu="false" data-icon="grid" data-iconpos="left" > 
+								<option>选择一个或者多个用户</option> 
+								<optgroup label="用户"> 
+									<option value="phoneUser" selected="">手机用户</option> 
+									<option value="passwdUser">密码用户</option> 
+									<option value="cardUser">IC卡用户</option> 
+								</optgroup> 
+							</select>
+						<fieldset/>
+					</div>
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>开门时限：</legend>
+							<input type="time" id="start-time" name="start-time" value="00:00"/>
+							<label for="end-time">到</label>
+							<input type="time" id="end-time" name="end-time" value="23:00"/>
+						<fieldset/>
+					</div>
+					<button name="submit" id="submit" data-inline="true">确认</button>
+					<button name="reset" id="reset" data-inline="true">重设</button>
+				</form>
+			</div>
+        </div>
+		
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="phonegap-nfc.js"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap-toast.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+			$(document).bind("mobileinit", function(){
+				$.mobile.defaultPageTransition = "none";
+				$.mobile.defaultTransition = "none";
+				$.mobile.ajaxEnabled = false; //禁用Ajax提交
+			});
+        </script>
+		<script type="text/javascript">
+			//提示信息 
+			function showMyAlert(text) {
+				$.mobile.loadingMessageTextVisible = true;
+				$.mobile.showPageLoadingMsg("a", text, true);
+			}
+			
+			function myAlert(text) {
+				showMyAlert(text);
+				setTimeout(hideLoading, 2000);
+			}
+			
+			function hideLoading() {
+				$.mobile.hidePageLoadingMsg();
+			}
+			
+			function exitApp() {
+				navigator.app.exitApp();
+			}
+		</script>
+        <script type="text/javascript">
+			var info = new Array();	//或者new Array();
+			var loginMode = null; //用于区分是用户登录还是管理员登录
+			document.addEventListener('deviceready', onDeviceReady, false);
+			$(document).ready(function () {
+				//主内容淡入渐变
+				$("#loadImg").fadeOut(4000, function(){
+					$("#indexContent").removeClass("hideMe");
+				});
+				//开锁操作写入信息
+				$('#unlock').click(function (e) {
+					e.preventDefault();
+					makeMessage();
+				});
+				//设置密码对话框的界面参数
+				var dialogOpts = {
+					themeDialog: "e",
+					themeHeader: "e",
+					mode: 'button',
+					headerText: '登录',
+					headerClose: true,
+					buttonPrompt: '密码：',
+					buttonInput: true,
+					buttonPassword: true,
+					showModal: false,
+					buttons : {
+					  '确定': {
+						click: function () { 
+							var password = $.mobile.sdLastInput
+							if(password === "admin" && loginMode == 'admin'){
+								loginMode = null;
+								$('#admin').prop('href', "#adminPage");
+								$.mobile.changePage("#adminPage");
+							}else if(password === "yujin" && loginMode == 'user') {
+								loginMode = null;
+								$('#user').prop('href', "#userPage");
+								$.mobile.changePage("#userPage");
+							}else if(password === ""){
+							  // notifyUser("密码错误请重新输入！");
+								alert("请输入密码！");
+								$(this).simpledialog2(dialogOpts);
+							   //return;
+							}else {
+							  // notifyUser("密码错误请重新输入！");
+								alert("密码错误请重新输入！");
+								$(this).simpledialog2(dialogOpts);
+							   //return;
+							}
+						},
+						icon: "check",
+						theme: "e"
+					  }
+					}
+				};
+				//改变登录的模式
+				$('#admin').click(function(myData, e){
+					loginMode = 'admin';
+					if ($(this).attr('href') === '#'){
+						$(this).simpledialog2(dialogOpts);
+					}					
+				});
+				$('#user').click(function(myData, e){
+					loginMode = 'user';
+					if ($(this).attr('href') === '#'){
+						$(this).simpledialog2(dialogOpts);
+					}
+				});
+				//当显示或者关闭用户信息的窗口的时候，用户信息表格为ID为1
+				$('#userInfo').on('pagebeforeshow pagebeforehide', function(eve){
+					if (eve.type == 'pagebeforeshow'){
+						//为表格动态添加数据
+						updateTableData(1);
+					}else if (eve.type == 'pagebeforehide'){
+						//还原表格信息
+						resetTableData(1);
+					}
+				});
+				//当显示或者关闭门锁信息的窗口的时候，用户信息表格为ID为2
+				$('#detectionInfo').on('pagebeforeshow pagebeforehide', function(eve){
+					if (eve.type == 'pagebeforeshow'){
+						//为表格动态添加数据
+						updateTableData(2);
+					}else if (eve.type == 'pagebeforehide'){
+						//还原表格信息
+						resetTableData(2);
+					}
+				});
+				//当显示或者关闭门锁信息的窗口的时候，用户信息表格为ID为2
+				$('#allUserInfo').on('pagebeforeshow pagebeforehide', function(eve){
+					if (eve.type == 'pagebeforeshow'){
+						//为表格动态添加数据
+						updateTableData(3);
+					}else if (eve.type == 'pagebeforehide'){
+						//还原表格信息
+						resetTableData(3);
+					}
+				});
+				//当显示或者关闭门锁信息的窗口的时候，用户信息表格为ID为2
+				$('#userRecords').on('pagebeforeshow pagebeforehide', function(eve){
+					if (eve.type == 'pagebeforeshow'){
+						//为表格动态添加数据
+						updateTableData(4);
+					}else if (eve.type == 'pagebeforehide'){
+						//还原表格信息
+						resetTableData(4);
+					}
+				});
+				//当显示或者关闭门锁信息的窗口的时候，用户信息表格为ID为2
+				$('#exceptionInfo').on('pagebeforeshow pagebeforehide', function(eve){
+					if (eve.type == 'pagebeforeshow'){
+						//为表格动态添加数据
+						updateTableData(5);
+					}else if (eve.type == 'pagebeforehide'){
+						//还原表格信息
+						resetTableData(5);
+					}
+				});
+				//设置用户
+				$('#submit').click(function () {
+					//往门禁里面写入数据
+					var typeContent = [];
+					$('#select-user option').each(function(){
+						if($(this).prop('selected')){
+							typeContent.push($(this).text());
+						}
+					});
+					var startTime = $('#start-time').val();
+					var endTime = $('#end-time').val();
+					if (typeContent.length == 0){
+						alert("请选择一种用户！");
+						return false;
+					}
+					writeFormInfo(typeContent, startTime, endTime);
+					return false;
+				});
+				$('#reset').click(function () {
+					$('#select-user option').each(function(index, element){
+						$(element).prop('selected', false);
+					});
+					//刷新下拉框
+					$('#select-user').selectmenu('refresh', true); 
+					$('#start-time').prop('value', '06:00');
+					$('#end-time').prop('value', '22:00');
+					return false;
+				});
+				
+				//确定退出系统
+				$('#exit').click(function (event){
+					event.preventDefault(); //阻止默认事件操作
+					confirmMsg(); //退出程序
+				});
+
+				function confirmMsg(){
+					var exit = window.confirm("确定退出程序吗？");
+					if(exit){
+						exitApp();
+					}
+				}
+				//监听回退健
+				document.addEventListener('backbutton', myBackbutton, false);
+			});
+			
+			function onDeviceReady(){
+				//注册NDEF tag
+				nfc.addNdefListener( onNfc, function() {
+					//成功提示振动和蜂鸣
+					//navigator.notification.vibrate(1000);
+					//navigator.notification.beep(3);
+					//notifyUser("Listening for NDEF tags.");
+					console.log("Listening for NDEF tags.");
+				}, fail);
+				//ndef-mime
+				nfc.addMimeTypeListener('text/pg', onNfc, function() {
+					//alert("Listening for NDEF tags.");
+					//navigator.notification.vibrate(1000);
+					//navigator.notification.beep(3);
+					//notifyUser("Listening for NDEF mime tags with type text/pg.");
+					console.log("Listening for NDEF mime tags with type text/pg.");
+				}, fail);
+				//注册NdefFormatable tag
+				nfc.addNdefFormatableListener( onNfc, function() {
+					//alert("Listening for NDEF tags.");
+					//成功振动提示
+					//navigator.notification.vibrate(1000);
+					//navigator.notification.beep(3);
+					//notifyUser("Listening for unformatted tags.");
+					console.log("Listening for unformatted tags.");
+				}, fail);
+			}
+			//监听回退处理事件
+			function myBackbutton() {
+				
+				if ($.mobile.activePage.is('#indexPage')) {
+					myAlert('3秒内再点一次退出！');
+					document.removeEventListener('backbutton', myBackbutton, false);
+					document.addEventListener('backbutton', exitApp, false);
+					//3 second later register again
+					var intervalID = window.setTimeout(function() { 
+						window.clearTimeout(intervalID);
+						document.removeEventListener('backbutton', exitApp, false);
+						document.addEventListener('backbutton', myBackbutton, false);
+					}, 3000);
+				} else {
+					navigator.app.backHistory();
+				}
+			}
+			//处理NFC事件
+			function onNfc(nfcEvent){
+				var tag = nfcEvent.tag; 
+				notifyUser(JSON.stringify(nfcEvent.tag)); 
+				var records = tag.ndefMessage || [];
+				for (var i = 0; i < records.length; i++) {
+					var record = records[i];
+					//note: The first three bit was the nfc message type
+					//var content = nfc.bytesToString(record.payload);
+					//var content = ndef.uriHelper.decodePayload(record.payload);
+					//notifyUser(content);
+					//info.push(content);
+					info.push(decodePayload(record));
+				}
+			}
+			function decodePayload(record) {
+				var recordType = nfc.bytesToString(record.type),
+					payload;
+				notifyUser(recordType);
+				// TODO extract this out to decoders that live in NFC code
+				// TODO add a method to ndefRecord so the helper 
+				// TODO doesn't need to do this
+			
+				if (recordType === "T" || recordType === "text/pg") {
+					notifyUser(nfc.bytesToString(record.payload));
+					var langCodeLength = record.payload[0] & 0x3f,
+					languageCode = record.payload.slice(1, langCodeLength),
+            		utf8 = (record.payload[0] & 0x80) === 0, // assuming UTF-16BE
+					text = record.payload.slice((1 + langCodeLength), record.payload.length);
+					
+					payload = nfc.bytesToString(text);
+					notifyUser(payload);
+				} else if (recordType === "U") {
+					var identifierCode = record.payload.shift(),
+					uri =  nfc.bytesToString(record.payload);
+			
+					if (identifierCode !== 0) {
+						// TODO decode based on URI Record Type Definition
+						console.log("WARNING: uri needs to be decoded");
+					}
+					//payload = "<a href='" + uri + "'>" + uri + "<\/a>";
+					payload = uri;
+			
+				} else {
+			
+					// kludge assume we can treat as String
+					payload = nfc.bytesToString(record.payload); 
+				}
+			
+				return payload;
+			}
+			
+			//注册NFC失败
+			function fail(error){
+				notifyUser("Error adding NDEF listener " + JSON.stringify(error));
+			}
+			//用户提示消息
+			function notifyUser(message){
+				toast.showShort(message);
+			}
+			
+			function makeMessage() {
+				// Put together the pieces for the NDEF message:
+				var tnf = ndef.TNF_MIME_MEDIA,            // NDEF Type Name Format
+				 recordType = 'text/pg',
+				 payload = 'Unlock the NFC Door!',     // content
+				 record,                   // NDEF record object
+				 message = [];             // NDEF Message to pass to writeTag()
+			  	// create the actual NDEF record:
+			  	record = ndef.record(tnf, recordType, [], payload);
+			  	// put the record in the message array:
+			  	message.push(record);
+			  	//write the message:
+			  	writeTag(message);
+		   	}
+			/*
+			   writes NDEF message @message to a tag:
+			*/
+		   	function writeTag(message) {
+			  	// write the record to the tag:
+			  	nfc.write(
+				 	message,                 // write the record itself to the tag
+				 	function () {            // when complete, run this callback function:
+						notifyUser("Wrote data to tag.");     // notify the user in message div
+						navigator.notification.vibrate(100);   // vibrate the device as well
+				 	},
+				 	function (reason) {     // this function runs if the write command fails
+						navigator.notification.alert(reason, function() {}, "There was a problem");
+				 	}
+			  	);
+		   	}
+			//动态添加数据到用户信息
+			function updateTableData(id){
+				switch(id){
+					case 1 :
+						setUserTable();
+						break;
+					case 2 :
+						setDetectionTable();
+						break;
+					case 3 :
+						setAllUserTable();
+						break;
+					case 4 :
+						setRecordsTable();
+						break;
+					case 5 :
+						setExceptionTable();
+						break;
+				}
+			}
+			function setUserTable(){
+				var element = $('#userTable tr:gt(0)');
+				if (info.length == 0) {
+					return false;	
+				}
+				for (var i = 0; i < info.length; i++){
+					if (i == 0){
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('22:00');
+					}else {
+						var newRow = element.clone(true);
+						newRow.find('td:eq(0)').text(info[i]);
+						newRow.find('td:eq(1)').text('22:00');
+						element.before(newRow);
+					}
+				}
+			}
+			function setDetectionTable(){
+				var element = $('#detectionTable tr:gt(0)');
+				if (info.length == 0) {
+					return false;	
+				}
+				for (var i = 0; i < info.length; i++){
+					if (i == 0){
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('5度');
+						element.find('td:eq(2)').text('10伏特');
+					}else {
+						var newRow = element.clone(true);
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('5度');
+						element.find('td:eq(2)').text('10伏特');
+						element.before(newRow);
+					}
+				}
+			}
+			function setAllUserTable(){
+				var element = $('#allUserTable tr:gt(0)');
+				if (info.length == 0) {
+					return false;	
+				}
+				for (var i = 0; i < info.length; i++){
+					if (i == 0){
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('06:00');
+						element.find('td:eq(2)').text('22:00');
+					}else {
+						var newRow = element.clone(true);
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('06:00');
+						element.find('td:eq(2)').text('22:00');
+						element.before(newRow);
+					}
+				}
+			}
+			function setRecordsTable(){
+				var element = $('#recordsTable tr:gt(0)');
+				if (info.length == 0) {
+					return false;	
+				}
+				for (var i = 0; i < info.length; i++){
+					if (i == 0){
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('08:30');
+					}else {
+						var newRow = element.clone(true);
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('08:30');
+						element.before(newRow);
+					}
+				}
+			}
+			function setExceptionTable(){
+				var element = $('#exceptionTable tr:gt(0)');
+				if (info.length == 0) {
+					return false;	
+				}
+				for (var i = 0; i < info.length; i++){
+					if (i == 0){
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('08:30');
+					}else {
+						var newRow = element.clone(true);
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('08:30');
+						element.before(newRow);
+					}
+				}
+			}
+			//还原表格数据信息
+			function resetTableData(id){
+				switch(id){
+					case 1 :
+						$("#userTable tr:gt(0):not(:eq(0))").remove();
+						break;
+					case 2 :
+						$("#detectionTable tr:gt(0):not(:eq(0))").remove();
+						break;
+					case 3 :
+						$("#allUserTable tr:gt(0):not(:eq(0))").remove();
+						break;
+					case 4 :
+						$("#recordsTable tr:gt(0):not(:eq(0))").remove();
+						break;
+					case 5 :
+						$("#exceptionTable tr:gt(0):not(:eq(0))").remove();
+						break;
+				}
+			}
+			
+			function writeFormInfo(typeContent, startTime, endTime){
+				// Put together the pieces for the NDEF message:
+				var tnf = ndef.TNF_MIME_MEDIA,            // NDEF Type Name Format
+				 recordType = 'text/pg',
+				 record,                   // NDEF record object
+				 message = [];             // NDEF Message to pass to writeTag()
+			  	// create the actual NDEF record:
+				for (var i = 0; i < typeContent.length; i++){
+					
+					record = ndef.record(tnf, recordType, [], typeContent[i]+",起始时间："+startTime+",终于时间："+endTime);
+					
+					// put the record in the message array:
+					message.push(record);
+				}
+			  	//write the message:
+			  	writeTag(message);
+			}
+		</script> 
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile.simpledialog2.min.js"></script>
+    </body>
+</html>

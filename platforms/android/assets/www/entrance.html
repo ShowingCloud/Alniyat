@@ -1,0 +1,527 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport"  content="width=device-width" />
+		<meta http-equiv='Content-Type' content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		
+		<title>PhoneGap 门禁</title>
+    </head>
+    <body>
+        <div data-role="page" id="indexPage" >
+			<div data-role="header" data-theme="a" data-position="fixed">
+				<a href="#leftPage" data-icon="arrow-l" data-iconpos="notext"></a>
+				<h1>门禁</h1>
+				<a href="#rightPage" data-icon="arrow-r" data-iconpos="notext" ></a>
+			</div><!--/header-->
+			
+			<div data-role="content" data-theme="c" id="indexContent">
+				<p>请把NFC的标签或贴纸放在NFC手机设备背面附近</p>
+				<img src="img/read_nfc_tag.png" />
+			</div><!--/index page content-->
+			
+			<div data-role="footer" data-mini="true" data-position="fixed" data-id="unifiedFooter">
+				<div data-role="navbar" > 
+					<ul>
+						<li><a href="#" data-icon="grid">Summary</a></li> 
+						<li><a href="#" data-icon="star">Favs</a></li> 
+						<li><a href="#" data-icon="gear">Setup</a></li> 
+						<li><a href="#" data-icon="edit">Edit</a></li> 
+					</ul> 
+				</div>
+			</div><!--/footer-->
+		</div><!--/index page-->
+		
+        <div data-role="page" id="rightPage" >
+			<div data-role="header" data-theme="a" data-position="fixed">
+            	<a href="#indexPage" data-icon="arrow-l" data-iconpos="notext" ></a>
+				<h1>门禁</h1>
+			</div>
+			<div data-role="content" data-theme="c" id="rightContent">
+				<ul data-role="listview" data-inset="true" data-theme="a" >
+					<li>
+						<a href="#">
+							<img src="img/unlock.jpg" alt="unlock"  />
+							<h2>开锁</h2>
+							<p>用NFC技术开门锁。</p>
+						</a>
+					</li>
+					<li>
+						<a href="#user-search" data-rel="popup" data-position-to="window" data-transition="pop">
+							<img src="img/search.jpg" alt="search"  />
+							<h2>查询</h2>
+							<p>查询用户的开门次数和开门的时间限制！</p>
+						</a>
+					</li>
+					<li>
+						<a href="#user-exception" data-rel="popup" data-position-to="window" data-transition="pop">
+							<img src="img/exception.jpg" alt="exception"  />
+							<h2>异常</h2>
+							<p>异常状态的警示，例如：蜂鸣。</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--/right page content-->
+			<!--用户信息-->
+			<div data-role="popup" id="user-search" data-theme="e" data-overlay-theme="d"  class="ui-content" style="max-width:90%; padding-bottom:0.5em;">
+				<h3>用户信息：</h3>
+				<table id="userTable" style="width:100%; text-align:center;" border="1" >
+					<caption>开门次数和开门时限</caption>  
+					<tr>  
+						<th style="width:40%">开门次数</th>  
+						<th style="width:60%">时间限制</th>  
+					</tr>  
+					<tr>  
+						<td ></td>  
+						<td ></td>  
+					</tr> 
+				</table>
+				
+				<!--data-rel="back" 返回-->
+				<a href="#rightPage" data-role="button"  data-icon="delete" data-iconpos="left" data-inline="true" data-mini="true"  data-theme="b">取消</a>
+			</div>
+			<!--用户异常对话框窗口-->
+			<div data-role="popup" id="user-exception" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+				<h3>异常</h3>
+				<p>异常状态的警示!</p>
+				
+				<!--data-rel="back" 表示返回到上层，a标签的链接就不起作用-->
+				<a href="#rightPage" data-role="button" data-rel="back" data-inline="true" data-mini="true"  data-theme="b">返回</a>
+			</div>
+			<div data-role="footer" data-mini="true" data-position="fixed" data-id="unifiedFooter">
+				<div data-role="navbar" > 
+					<ul>
+						<li><a href="#" data-icon="grid">Summary</a></li> 
+						<li><a href="#" data-icon="star">Favs</a></li> 
+						<li><a href="#" data-icon="gear">Setup</a></li> 
+						<li><a href="#" data-icon="edit">Edit</a></li> 
+					</ul> 
+				</div>
+			</div>
+		</div><!--right page-->
+        
+		<div data-role="page" id="leftPage" >
+			<div data-role="header" data-theme="a" data-position="fixed">
+				<h1>门禁</h1>
+                <a href="#indexPage" data-icon="arrow-r" data-iconpos="notext" class="ui-btn-right"></a>
+			</div><!--/header-->
+			
+			<div data-role="content" data-theme="b" data-inset="true" id="leftContent">
+				<section class="gallery">
+					<ul class="gallery-entries clearfix">	
+						<li class="gallery-item">
+							<a href="#"><img src="img/unlock.png"/>
+							<h3>开锁</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-setup"><img src="img/setup.png"/>
+							<h3>设置</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-user-infor"><img src="img/search-user.png"/>
+							<h3>用户信息</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-user-detection"><img src="img/search-detection.png"/>
+							<h3>检测信息</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-user-records"><img src="img/search-records.png"/>
+							<h3>出入记录</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-change-mode" data-rel="dialog"><img src="img/setup-mode.png"/>
+							<h3>模式设置</h3>
+							</a>
+						</li>
+						<li class="gallery-item">
+							<a href="#admin-exception" data-rel="dialog"><img src="img/error.png"/>
+							<h3>异常</h3>
+							</a>
+						</li>
+					</ul>
+				</section>
+			</div><!--/left page content-->
+			
+			<div data-role="footer" data-mini="true" data-position="fixed" data-id='unifiedFooter'>
+				<div data-role="navbar" > 
+					<ul>
+						<li><a href="#" data-icon="grid">Summary</a></li> 
+						<li><a href="#" data-icon="star">Favs</a></li> 
+						<li><a href="#" data-icon="gear">Setup</a></li> 
+						<li><a href="#" data-icon="edit">Edit</a></li> 
+					</ul> 
+				</div>
+			</div><!--/footer-->
+		</div><!--left page-->
+		
+		<!-- 管理员异常对话框窗口-->
+		<div data-role="page" id="admin-exception" data-theme="b" data-overlay-theme="b" style="padding-top:30%">
+			<div data-role="header">
+				<h1>异常</h1>
+			</div>
+			<div data-role="content">
+				<p>The dialog box is different from a normal page, 
+					it is displayed on top of the current page with a dark background color. 
+					It will not span the entire width of the page. 
+					The dialog has an icon of "X" in the header to close the box.
+				</p>
+				<a href="#leftPage" data-role="button" data-icon='back' data-theme="b" data-inline="true" data-mini="true">取消</a>
+			</div>
+		</div>
+		
+		<!--管理员设置窗口-->
+		<div data-role="page" id="admin-setup" >
+			<div data-role="header" data-theme="b">
+				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
+				<h1>设置</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<form >
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>用户类型：</legend>
+							<select name="select-user" id="select-user" multiple="multiple" data-native-menu="false" data-icon="grid" data-iconpos="left" > 
+								<option>选择一个或者多个用户</option> 
+								<optgroup label="用户"> 
+									<option value="phoneUser" selected="">手机用户</option> 
+									<option value="passwdUser">密码用户</option> 
+									<option value="cardUser">IC卡用户</option> 
+								</optgroup> 
+							</select>
+						<fieldset/>
+					</div>
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>开门次数：</legend>
+							<input type="number" id="unlock-counts" name="unlock-counts" value="0"/>
+						<fieldset/>
+					</div>
+					<div data-role="fieldcontain">
+						<fieldset data-role="controlgroup">
+							<legend>开门时限：</legend>
+							<input type="time" id="start-time" name="start-time" value="00:00"/>
+							<label for="end-time">到</label>
+							<input type="time" id="end-time" name="end-time" value="23:00"/>
+						<fieldset/>
+					</div>
+					<button name="submit" id="submit" data-inline="true">确认</button>
+					<button name="reset" id="reset" data-inline="true">重设</button>
+				</form>
+			</div>
+		</div>
+		<!-- 管理员用户信息窗口-->
+		<div data-role="page" id="admin-user-infor" >
+			<div data-role="header" data-theme="b">
+				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
+				<h1>用户信息</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<table id="adminUserTable" style="width:100%; text-align:center;" border="1" >
+					<caption>所有用户信息</caption>  
+					<tr> 
+						<th style="width:20%">类型</th> 
+						<th style="width:20%">编号</th>
+						<th style="width:30%">开门次数</th>  
+						<th style="width:30%">开门时限</th>  
+					</tr>  
+					<tr>  
+						<td >手机</td>  
+						<td >10acd05</td>
+						<td >100次</td>  
+						<td >06:00~22:00</td>  
+					</tr> 
+				</table>
+			</div>
+		</div>
+		
+		<!--管理用户出入记录窗口-->
+		<div data-role="page" id="admin-user-records" >
+			<div data-role="header" data-theme="b">
+				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
+				<h1>出入记录</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<table id="adminRecordsTable" style="width:100%; text-align:center;" border="1" >
+					<caption>用户出入记录</caption>  
+					<tr>
+						<th style="width:30%">编号</th>
+						<th style="width:30%">状态</th> 
+						<th style="width:40%">时间</th> 
+					</tr>  
+					<tr>  
+						<td >10acd05</td>  
+						<td >出</td>
+						<td >09:25</td>  
+					</tr> 
+				</table>
+			</div>
+		</div>
+		
+		<!--管理员检测信息窗口-->
+		<div data-role="page" id="admin-user-detection" >
+			<div data-role="header" data-theme="b">
+				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
+				<h1>检测信息</h1>
+			</div>
+			<div data-role="content" data-inset="true" data-theme="e">
+				<table id="adminDetectionTable" style="width:100%; text-align:center;" border="1" >
+					<caption>门禁信息状态</caption>  
+					<tr>
+						<th style="width:30%">电量</th>
+						<th style="width:40%">温度</th> 
+						<th style="width:30%">电压</th> 
+					</tr>  
+					<tr>  
+						<td >80%</td>  
+						<td >5度</td>
+						<td >10伏特</td>  
+					</tr> 
+				</table>
+			</div>
+		</div>
+		
+		<!--管理员用户模式设置-->
+		<div data-role="page" id="admin-change-mode" data-theme="b" data-overlay-theme="b" style="padding-top:10%;"  >
+			<div data-role="header">
+				<h1>模式设置</h1>
+			</div>
+			<div data-role="content" data-theme="e">
+				<fieldset data-role="controlgroup"> 
+					<legend>选择模式：</legend> 
+						<input name="radio-mode" id="mode1" value="mode1" checked="checked" type="radio"> 
+						<label for="mode1">模式1</label> 
+						<input name="radio-mode" id="mode2" value="mode2"  type="radio"> 
+						<label for="mode2">模式2</label>
+						<input name="radio-mode" id="mode3" value="mode3"  type="radio"> 
+						<label for="mode3">模式3</label> 
+						<input name="radio-mode" id="mode4" value="mode4"  type="radio"> 
+						<label for="mode4">模式4</label> 
+						<input name="radio-mode" id="mode5" value="mode5"  type="radio"> 
+						<label for="mode5">模式5</label> 
+				</fieldset>
+				<a href="#" data-role="button" data-icon='check'  data-inline="true" data-mini="true">确定</a>
+				<a href="#leftPage" data-role="button" data-icon='delete' data-theme="b" data-inline="true" data-mini="true">取消</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="phonegap-nfc.js"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap-toast.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript">
+			$(document).bind("mobileinit", function(){
+				//$.mobile.activePageClass="ui-page-custom";
+				$.mobile.defaultPageTransition = "none";
+				/*
+				$.mobile.ajaxLinksEnabled = false; // 禁用Ajax提交
+				$.mobile.ajaxFormsEnabled = false; // 禁用Ajax提交
+				$.mobile.ajaxEnabled = false; //禁用Ajax提交
+				*/
+				/*
+				$.mobile.defaultTransition = "slidedown"; // 6种动画slide, slideup, slidedown, pop, fade, flip
+				$.mobile.defaultPageTransition = "fade";
+				$.mobile.defaultDialogTransition = "slide";
+				$.mobile.loadingMessage = "Pleadse wait"; // 页面加载信息
+				$.mobile.pageLoadErrorMessage = "Soory, something went wrong. Please try again."; // 页面加载出错信息
+				*/
+			});
+        </script>
+		<script type="text/javascript">
+			//提示信息 
+			function showMyAlert(text) {
+				$.mobile.loadingMessageTextVisible = true;
+				$.mobile.showPageLoadingMsg("a", text, true);
+			}
+			
+			function myAlert(text) {
+				showMyAlert(text);
+				setTimeout(hideLoading, 2000);
+			}
+			
+			function hideLoading() {
+				$.mobile.hidePageLoadingMsg();
+			}
+			
+			function exitApp() {
+				navigator.app.exitApp();
+			}
+		</script>
+        <script type="text/javascript">
+			var info = new Array();	//或者new Array();
+			document.addEventListener('deviceready', onDeviceReady, false);
+			$(document).ready(function () {
+				
+				//indexPage页左右滑动事件
+				$(document).on('swipeleft swiperight', '#indexPage', function(event){
+					if(event.type == 'swipeleft') {
+						$.mobile.changePage("#leftPage");
+					} else if (event.type == 'swiperight') {
+						$.mobile.changePage("#rightPage");
+					}
+				});
+				
+				//rightPage页左滑事件
+				$(document).on('swipeleft', '#rightPage', function(event){
+					$.mobile.changePage("#indexPage");
+				});
+				
+				//leftPage页右滑事件
+				$(document).on('swiperight', '#leftPage', function(event){
+					$.mobile.changePage("#indexPage");
+				});
+				
+				//当显示用户信息的窗口的时候，
+				$('#user-search').on('popupbeforeposition', function(event){
+					//为表格动态添加数据
+					insertDataToTable();
+				});
+				
+				//当显示关闭用户信息的窗口的时候
+				$('#user-search').on('popupafterclose', function(event){
+					//还原表格信息
+					resetDataToTable();
+				});
+				
+				//监听回退健
+				document.addEventListener('backbutton', myBackbutton, false);
+			});
+			
+			function onDeviceReady(){
+				//注册NDEF tag
+				nfc.addNdefListener( onNfc, function() {
+					//成功提示振动和蜂鸣
+					//navigator.notification.vibrate(1000);
+					//navigator.notification.beep(3);
+					//notifyUser("Listening for NDEF tags.");
+					console.log("Listening for NDEF tags.");
+				}, fail);
+				//ndef-mime
+				nfc.addMimeTypeListener('text/pg', onNfc, function() {
+					//alert("Listening for NDEF tags.");
+					//navigator.notification.vibrate(1000);
+					//navigator.notification.beep(3);
+					//notifyUser("Listening for NDEF mime tags with type text/pg.");
+					console.log("Listening for NDEF mime tags with type text/pg.");
+				}, fail);
+				//注册NdefFormatable tag
+				nfc.addNdefFormatableListener( onNfc, function() {
+					//alert("Listening for NDEF tags.");
+					//成功振动提示
+					//navigator.notification.vibrate(1000);
+					//navigator.notification.beep(3);
+					//notifyUser("Listening for unformatted tags.");
+					console.log("Listening for unformatted tags.");
+				}, fail);
+			}
+			//监听回退处理事件
+			function myBackbutton() {
+				
+				if ($.mobile.activePage.is('#indexPage')) {
+					myAlert('3秒内再点一次退出！');
+					document.removeEventListener('backbutton', myBackbutton, false);
+					document.addEventListener('backbutton', exitApp, false);
+					//3 second later register again
+					var intervalID = window.setTimeout(function() { 
+						window.clearTimeout(intervalID);
+						document.removeEventListener('backbutton', exitApp, false);
+						document.addEventListener('backbutton', myBackbutton, false);
+					}, 3000);
+				} else {
+					navigator.app.backHistory();
+				}
+			}
+			//处理NFC事件
+			function onNfc(nfcEvent){
+				var tag = nfcEvent.tag; 
+				notifyUser(JSON.stringify(nfcEvent.tag)); 
+				var records = tag.ndefMessage || [];
+				for (var i = 0; i < records.length; i++) {
+					var record = records[i];
+					//note: The first three bit was the nfc message type
+					//var content = nfc.bytesToString(record.payload);
+					//var content = ndef.uriHelper.decodePayload(record.payload);
+					//notifyUser(content);
+					info.push(decodePayload(record));
+					info.push(content);
+				}
+			}
+			function decodePayload(record) {
+				var recordType = nfc.bytesToString(record.type),
+					payload;
+				notifyUser(recordType);
+				// TODO extract this out to decoders that live in NFC code
+				// TODO add a method to ndefRecord so the helper 
+				// TODO doesn't need to do this
+			
+				if (recordType === "T") {
+					notifyUser(nfc.bytesToString(record.payload));
+					var langCodeLength = record.payload[0] & 0x3f,
+					languageCode = record.payload.slice(1, langCodeLength),
+            		utf8 = (record.payload[0] & 0x80) === 0, // assuming UTF-16BE
+					text = record.payload.slice((1 + langCodeLength), record.payload.length);
+					
+					payload = nfc.bytesToString(text);
+					notifyUser(payload);
+				} else if (recordType === "U") {
+					var identifierCode = record.payload.shift(),
+					uri =  nfc.bytesToString(record.payload);
+			
+					if (identifierCode !== 0) {
+						// TODO decode based on URI Record Type Definition
+						console.log("WARNING: uri needs to be decoded");
+					}
+					//payload = "<a href='" + uri + "'>" + uri + "<\/a>";
+					payload = uri;
+			
+				} else {
+			
+					// kludge assume we can treat as String
+					payload = nfc.bytesToString(record.payload); 
+				}
+			
+				return payload;
+			}
+			
+			//注册NFC失败
+			function fail(error){
+				notifyUser("Error adding NDEF listener " + JSON.stringify(error));
+			}
+			//用户提示消息
+			function notifyUser(message){
+				toast.showShort(message);
+			}
+			//动态添加数据到用户信息
+			function insertDataToTable(){
+				var element = $('#userTable tr:gt(0)');
+				if (info.length == 0) {
+					return false;	
+				}
+				for (var i = 0; i < info.length; i++){
+					if (i == 0){
+						element.find('td:eq(0)').text(info[i]);
+						element.find('td:eq(1)').text('06:00~22:00');
+					}else {
+						var newRow = element.clone(true);
+						newRow.find('td:eq(0)').text(info[i]);
+						newRow.find('td:eq(1)').text('06:00~22:00');
+						element.before(newRow);
+					}
+				}
+			}
+			//还原用户信息表格信息
+			function resetDataToTable(){
+				$("#userTable tr:gt(0):not(:eq(0))").remove();
+			}
+		</script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+    </body>
+</html>

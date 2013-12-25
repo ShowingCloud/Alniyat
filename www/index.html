@@ -11,7 +11,7 @@
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript">
-			//ÌáÊ¾ÐÅÏ¢
+			//ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
 			function showMyAlert(text) {
 				$.mobile.loadingMessageTextVisible = true;
 				$.mobile.showPageLoadingMsg("a", text, true);
@@ -31,9 +31,10 @@
 			}
 		</script>
         <script type="text/javascript">
-		
-			$(function () {
-				document.addEventListener('deviceready', myDeviceready, false);
+			
+			$(document).ready(function () {
+				/*
+				//document.addEventListener('deviceready', myDeviceready, false);
 				$(document).on("pageinit","#indexPage",function(){
 					//swipe left change pange
 					$(this).on("swipeleft",function(){
@@ -56,53 +57,35 @@
 						$.mobile.changePage("#indexPage", { transition: "slide", changeHash: false });
 					});                       
 				});
-			})
-			
-			function myDeviceready() {
+				*/
+				$('div[data-role="content"]').bind('swipeleft swiperight', function(event){
+					if(event.type == 'swiperight') {
+						displayNext();
+						event.stopImmediatePropagation();
+						return false;
+					}
+					if(event.type == 'swipeleft') {
+						displayPrevious();
+						event.stopImmediatePropagation();
+						return false;
+					}
+				});
+				
 				/*
-				$(document).on("pageshow","#indexPage",function(){
-					//swipe left change pange
-					$(this).on("swipeleft",function(){
-						$.mobile.changePage("#leftPage", { transition: "slideup", changeHash: false });
-					}); 
-					//swipe right change pange
-					$(this).on("swiperight",function(){
-						$.mobile.changePage("#rightPage", { transition: "slidedown", changeHash: false });
-					}); 
+				$(document).on('swipeleft swiperight', function (event) {
+					if(event.type == 'swiperight') {
+						var prevpage = '#' + $.mobile.activePage.prev('div[data-role="page"]')[0].id;
+						$.mobile.changePage(prevpage, {transition: 'slide',reverse: true});
+					}
+
+					if(event.type == 'swipeleft') {
+						var nextpage = '#' + $.mobile.activePage.next('div[data-role="page"]')[0].id;
+						$.mobile.changePage(nextpage, {transition: 'slide',reverse: false});
+					}
 				});
-				
-				$(document).on("pageshow","#leftPage",function(){
-					$(this).on("swiperight",function(){
-						$.mobile.changePage("#indexPage", { transition: "slideup", changeHash: false });
-					});                       
-				});
-				
-				$(document).on("pageshow","#rightPage",function(){
-					$(this).on("swipeleft",function(){
-						$.mobile.changePage("#indexPage", { transition: "slideup", changeHash: false });
-					});                       
-				});
-				
-				if ($.mobile.activePage.is('#indexPage')) {
-					$(this).on("swipeleft",function(){
-							$.mobile.changePage("#leftPage", { transition: "slideup", changeHash: false });
-					}); 
-					$(this).on("swiperight",function(){
-							$.mobile.changePage("#rightPage", { transition: "slideup", changeHash: false });
-					});  
-				}else if($.mobile.activePage.is('#leftPage')){
-					$(this).on("swiperight",function(){
-							$.mobile.changePage("#indexPage", { transition: "slideup", changeHash: false });
-					}); 
-				}else{
-					$(this).on("swipeleft",function(){
-							$.mobile.changePage("#indexPage", { transition: "slideup", changeHash: false });
-					}); 
-				}*/
-				// registered back button listener
+				*/
 				document.addEventListener('backbutton', myBackbutton, false);
-			}
-			
+			});
 			function myBackbutton() {
 				
 				if ($.mobile.activePage.is('#indexPage')) {
@@ -207,11 +190,12 @@
 				</div>
 			</div><!--/footer-->
 		</div><!--left page-->
+        
 		
 		<div data-role="page" id="rightPage">
 			<div data-role="header" data-theme="a" data-position="fixed">
 				<h1>Entrance Guard</h1>
-			</div><!--/header-->
+			</div>
 			<div data-role="content" data-theme="c">
 				<ul data-role="listview" data-inset="true" data-theme="a" >
 					<li>
@@ -252,7 +236,7 @@
 					</tr> 
 				</table>
 				
-				<!--data-rel="back" ±íÊ¾·µ»Ø£¬Ç°ÃæµÄÁ¬½Ó²»Æð×÷ÓÃ-->
+				<!--data-rel="back" ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ø£ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-->
 				<a href="#rightPage" data-role="button"  data-icon="delete" data-iconpos="left" data-inline="true" data-mini="true"  data-theme="b">Cancel</a>
 			</div>
 			
@@ -260,10 +244,9 @@
 				<h3>Exception</h3>
 				<p>The abnormal state of alert!</p>
 				
-				<!--data-rel="back" ±íÊ¾·µ»Ø£¬Ç°ÃæµÄÁ¬½Ó²»Æð×÷ÓÃ-->
+				<!--data-rel="back" ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ø£ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-->
 				<a href="#rightPage" data-role="button" data-rel="back" data-inline="true" data-mini="true"  data-theme="b">Cancel</a>
 			</div>
-			
 			<div data-role="footer" data-mini="true" data-position="fixed">
 				<div data-role="navbar" > 
 					<ul>
@@ -273,11 +256,11 @@
 						<li><a href="#" data-icon="edit">Edit</a></li> 
 					</ul> 
 				</div>
-			</div><!--/footer-->
+			</div>
 		</div><!--right page-->
 		
 		
-		<!-- ¹ÜÀíÔ±Òì³£¶Ô»°¿ò-->
+		<!-- ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ì³£ï¿½Ô»ï¿½ï¿½ï¿½-->
 		<div data-role="page" id="admin-exception" data-theme="b" data-overlay-theme="b" style="padding-top:30%">
 			<div data-role="header">
 				<h1>Exception</h1>
@@ -292,7 +275,7 @@
 			</div>
 		</div>
 		
-		<!-- ¹ÜÀíÔ±ÉèÖÃ-->
+		<!-- ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½-->
 		<div data-role="page" id="admin-setup" >
 			<div data-role="header" data-theme="b">
 				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
@@ -332,7 +315,7 @@
 				</form>
 			</div>
 		</div>
-		<!-- ¹ÜÀíÔ±²éÑ¯ÓÃ»§ÐÅÏ¢-->
+		<!-- ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½ï¿½Ï¢-->
 		<div data-role="page" id="admin-user-infor" >
 			<div data-role="header" data-theme="b">
 				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
@@ -357,7 +340,7 @@
 			</div>
 		</div>
 		
-		<!-- ¹ÜÀíÔ±²éÑ¯ÓÃ»§ÐÅÏ¢-->
+		<!-- ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½ï¿½Ï¢-->
 		<div data-role="page" id="admin-user-records" >
 			<div data-role="header" data-theme="b">
 				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
@@ -380,7 +363,7 @@
 			</div>
 		</div>
 		
-		<!-- ¹ÜÀíÔ±²éÑ¯ÓÃ»§ÐÅÏ¢-->
+		<!-- ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½ï¿½Ï¢-->
 		<div data-role="page" id="admin-user-detection" >
 			<div data-role="header" data-theme="b">
 				<a href="#leftPage" data-icon="delete" data-iconpos="notext"></a>
@@ -403,7 +386,7 @@
 			</div>
 		</div>
 		
-		<!-- ¹ÜÀíÔ±Òì³£¶Ô»°¿ò-->
+		<!-- ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ì³£ï¿½Ô»ï¿½ï¿½ï¿½-->
 		<div data-role="page" id="admin-change-mode" data-theme="b" data-overlay-theme="b" style="padding-top:30%" data-inset="true">
 			<div data-role="header">
 				<h1>Mode</h1>
