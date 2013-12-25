@@ -453,12 +453,11 @@
 				//确定退出系统
 				$('#exit').click(function (event){
 					event.preventDefault(); //阻止默认事件操作
-					confirmMsg(); //退出程序
+					navigator.notification.confirm("是否退出NFC门禁", confirmMsg, "退出程序", "确认,取消"); //退出程序
 				});
 
-				function confirmMsg(){
-					var exit = window.confirm("确定退出程序吗？");
-					if(exit){
+				function confirmMsg(button){
+					if(button == 1){
 						exitApp();
 					}
 				}
