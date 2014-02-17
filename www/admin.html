@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <meta name="viewport"  content="width=device-width" />
+		<meta http-equiv='Content-Type' content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css">
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<title>PhoneGap 门禁</title>
+    </head>
+	<body>
+		<!--管理员界面-->
+        <div data-role="page" id="adminPage" data-dom-cache="true" data-theme="e">
+			<div data-role="header"  data-position="fixed" data-theme='e'>
+				<h1>门禁</h1>
+			</div><!--/header-->
+			<div data-role="content" data-theme="e" id="adminContent" style='margin-left:5%'>
+				<!--
+				<ul data-role="listview" data-inset="true" data-theme="c" >
+					<li>
+						<a href="allUserInfo.html" rel="external" >
+							<img src="img/search-user.png" alt="search"  />
+							<h2>用户信息</h2>
+							<p>查询所有用户信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="detectionInfo.html"  rel="external" data-rel="dialog" data-position-to="window">
+							<img src="img/search-detection.png" alt="exception"  />
+							<h2>门锁信息</h2>
+							<p>门锁的检测信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="userRecords.html" rel="external" >
+							<img src="img/search-records.png" alt="search"  />
+							<h2>开门记录</h2>
+							<p>查询用户进出记录信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="exceptionInfo.html" rel="external" >
+							<img src="img/error.png" alt="search"  />
+							<h2>异常信息</h2>
+							<p>查询所有非法异常开门的记录信息</p>
+						</a>
+					</li>
+					<li>
+						<a href="setupUser.html" rel="external" >
+							<img src="img/setup.png" alt="search"  />
+							<h2>用户设置</h2>
+							<p>设置用户以及开门时间限制</p>
+						</a>
+					</li>
+				</ul>
+				-->
+				<!--<p>功能九宫格/功能列表/功能块</p>-->
+				<div class="ui-grid-b" style="margin-top:10%">
+					<div id='userInfo' class="ui-block-a"><img src="img/search-user.png" width="80%" /><p align="center" >用户信息</p></div>
+					<div id='lockInfo' class="ui-block-b"><img src="img/search-detection.png"  width="80%"/><p align="center" >门锁信息</p></div>
+					<div id='unlockRecords' class="ui-block-c"><img src="img/search-records.png"  width="80%"/><p align="center" >开门记录</p></div>
+				</div>
+				<div class="ui-grid-b">
+					<div id='illegalRecords' class="ui-block-a"><img src="img/error.png"  width="80%"/><p align="center" >非法记录</p></div>
+					<div id='modifyInfo' class="ui-block-b"><img src="img/setup.png"  width="80%"/><p align="center" >修改信息</p></div>
+					<div id='addUser' class="ui-block-c"><img src="img/setup.png"  width="80%"/><p align="center" >增加用户</p></div>
+				</div>
+				<div class="ui-grid-b">
+					<div id='deleteUser' class="ui-block-a"><img src="img/error.png"  width="80%"/><p align="center" >删除用户</p></div>
+					<div id='otherSetup' class="ui-block-b"><img src="img/setup.png"  width="80%"/><p align="center" >其他设置</p></div>
+					<div id='more' class="ui-block-c"><img src="img/setup.png"  width="80%"/><p align="center" >....</p></div>
+				</div>
+			</div><!--/right page content-->
+			<div data-role="footer" data-mini="true" data-position="fixed" data-id="unifiedFooter" data-theme='e'>
+				<div data-role="navbar" > 
+					<ul>
+						<li><a href="user.html" id="user" data-icon="star" rel="external">用户</a></li> 
+						<li><a href="#" id="admin" class="ui-btn-active" data-icon="grid" >管理员</a></li>
+						<li><a href="setup.html" id="setup" data-icon="gear" rel="external">设置</a></li> 
+						<li><a href="#" id="exit" data-icon="delete" >退出</a></li> 
+					</ul> 
+				</div>
+			</div><!--/footer-->
+        </div>
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="phonegap-nfc.js"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap-toast.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile.simpledialog2.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/admin.js"></script>
+        <script type="text/javascript" src="js/exit.js"></script>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport"  content="width=device-width" />
+		<meta http-equiv='Content-Type' content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css">
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<title>PhoneGap 门禁</title>
+		<style type="text/css">
+			.black_overlay{
+				display:none;
+				position:absolute;
+				top:0%;
+				left:0%;
+				width:100%;
+				height:100%;
+				background-color:#FFFFFF;
+				z-index:1001;
+				-moz-opacity:0.8;
+				opacity:.50;
+				filter:alpha(opacity=50);
+			}
+			.white_content{
+				display:none;
+				position:absolute;
+				top:25%;
+				left:25%;
+				width:50%;
+				height:50%;
+				padding:16px;
+				border:2px solid orange;
+				margin:-32px;
+				background-color:white;
+				z-index:1002;
+				overflow:auto;
+			}
+		</style>
+    </head>
+	<body>
+		<!--所有用户信息-->
+        <div data-role="page" id="addUser"  data-theme="e" >
+            <div data-role="header" data-theme="e">
+				<a href="admin.html" rel="external" data-icon="back"  data-inline="true">返回</a>
+                <h1>添加用户</h1>
+            </div>
+            <div data-role="content" data-inset="true" data-theme="e">
+                <table id="userTable" style="width:100%; text-align:center;" border="1">
+                    <caption>用户信息</caption>  
+					<thead>
+                    <tr>
+						<th style="width:20%;">序号</th>
+						<th style="width:30%;">昵称</th>
+						<th style="width:50%;">卡号</th>
+                    </tr>  
+					</thead>
+					<tbody>
+                    <tr>
+						<td >1</td>  
+						<td >张三</td>  
+						<td >786a4ef786a4ef</td>
+                    </tr> 
+					</tbody>
+                </table>
+				<a href="#" data-role='button' id="plus" data-icon="plus" data-inline="true" >添加</a>
+				<a href="#" data-role='button' id="saveAdd" data-icon="check" data-inline="true" >保存</a>
+        	</div>
+			<div id="light" class="white_content">
+				<h1>添加用户</h1>
+				<label id="typeLabel" for="type">类型</label>
+				<select data-native-menu="false" id="type">
+				<option value="phone">手机</option>
+				<option value="card">卡</option>
+				<option value="pass">密码</option>
+				</select>
+				<label id="contentLabel" for="cardNum">卡号</label>
+				<input type="text" name="cardNum" id="cardNum" value=""/>
+				<a data-icon='plus' data-role='button' href='#' id='add' style="float:left; margin-right: 4px;">添加</a>
+				<a data-icon='delete' data-role='button' href='#' id='cancel' style="float:left;">取消</a>
+			</div>
+			<div id="fade" class="black_overlay"></div>
+        </div>
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="phonegap-nfc.js"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap-toast.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile.simpledialog2.min.js"></script>
+		<script type="text/javascript" src="js/addUser.js"></script>
+    </body>
+</html>

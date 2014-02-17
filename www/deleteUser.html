@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport"  content="width=device-width" />
+		<meta http-equiv='Content-Type' content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css">
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<title>PhoneGap 门禁</title>
+    </head>
+	<body>
+		<!--所有用户信息-->
+        <div data-role="page" id="allUserInfo"  data-theme="e" >
+            <div data-role="header" data-theme="e">
+				<a href="admin.html" rel="external" data-icon="back" data-iconpos="notext" ></a>
+                <h1>所有用户信息</h1>
+            </div>
+            <div data-role="content" data-inset="true" data-theme="e">
+                <table id="allUserTable" style="width:100%; text-align:center;" border="1">
+                    <caption>用户信息</caption>  
+                    <tr>
+						<th style="width:10%;">序号</th>
+						<th style="width:15%;">昵称</th>
+						<th style="width:25%;">卡号</th>
+                        <th style="width:25%;">起始时间</th>
+                        <th style="width:25%;">终止时间</th> 
+                    </tr>  
+                    <tr>
+						<td >1</td>  
+						<td >张三</td>  
+						<td >786a4ef786a4ef</td>  
+                        <td >2014-01-13 06:00:01</td>  
+                        <td >2014-03-13 22:00:01</td>
+                    </tr> 
+                </table>
+        	</div>
+        </div>
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="phonegap-nfc.js"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap-toast.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+    </body>
+</html>

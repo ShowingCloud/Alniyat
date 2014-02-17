@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport"  content="width=device-width" />
+		<meta http-equiv='Content-Type' content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css">
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<title>PhoneGap 门禁</title>
+    </head>
+	<body>
+		<!--门锁信息-->
+        <div data-role="dialog" id="detectionInfo"  data-close-btn="none" data-theme="e" data-overlay-theme="e" style="padding-top:20%" data-dom-cache="true">
+            <div data-role="header" data-theme="b">
+				<a href="admin.html" rel="external" data-rel="back" data-icon="delete" data-iconpos="notext" ></a>
+                <h1>门锁信息</h1>
+            </div>
+            <div data-role="content" data-inset="true" data-theme="e">
+                <table id="detectionTable" style="width:100%; text-align:center;" border="1" >
+                    <caption>门禁信息状态</caption>  
+                    <tr>
+                        <th style="width:50%">温度</th> 
+                        <th style="width:50%">电压</th> 
+                    </tr>  
+                    <tr> 
+                        <td >5度</td>
+                        <td >10伏特</td>  
+                    </tr> 
+                </table>
+        	</div>
+        </div>
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="phonegap-nfc.js"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap-toast.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+    </body>
+</html>

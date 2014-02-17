@@ -1,0 +1,29 @@
+$(document).ready(function(){
+	$('#userInfo').click(function(){
+		$.mobile.changePage("userInfo.html");
+	});
+	$('#lockInfo').click(function(){
+		$.mobile.changePage("lockInfo.html");
+	});
+	$('#unlockRecords').click(function(){
+		$.mobile.changePage("unlockRecords.html");
+	});
+	$('#illegalRecords').click(function(){
+		$.mobile.changePage("illegalRecords.html");
+	});
+	$('#modifyInfo').click(function(){
+		$.mobile.changePage("modifyInfo.html");
+	});
+	$('#addUser').click(function(){
+		$.mobile.changePage("addUser.html");
+	});
+	$('#deleteUser').click(function(){
+		$.mobile.changePage("deleteUser.html");
+	});
+	$('#otherSetup').click(function(){
+		$.mobile.changePage("otherSetup.html");
+	});
+	$('#more').click(function(){
+		$.mobile.changePage("more.html");
+	});
+});
