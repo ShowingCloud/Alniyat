@@ -12,30 +12,35 @@
 		<title>PhoneGap 门禁</title>
     </head>
 	<body>
-		<!--所有用户信息-->
+		<!--删除用户信息-->
         <div data-role="page" id="allUserInfo"  data-theme="e" >
             <div data-role="header" data-theme="e">
 				<a href="admin.html" rel="external" data-icon="back" data-iconpos="notext" ></a>
-                <h1>所有用户信息</h1>
+                <h1>删除所选用户</h1>
             </div>
             <div data-role="content" data-inset="true" data-theme="e">
                 <table id="allUserTable" style="width:100%; text-align:center;" border="1">
                     <caption>用户信息</caption>  
                     <tr>
-						<th style="width:10%;">序号</th>
-						<th style="width:15%;">昵称</th>
-						<th style="width:25%;">卡号</th>
-                        <th style="width:25%;">起始时间</th>
-                        <th style="width:25%;">终止时间</th> 
+						<th width="20%">序号</th>
+						<th width="30%">昵称</th>
+						<th width="30%">卡号</th>
+                        <th width="20%">选择</th>
                     </tr>  
                     <tr>
 						<td >1</td>  
 						<td >张三</td>  
 						<td >786a4ef786a4ef</td>  
-                        <td >2014-01-13 06:00:01</td>  
-                        <td >2014-03-13 22:00:01</td>
+                        <td ><input  name="ckb" type="checkbox" /></td>  
+                    </tr> 
+					<tr>
+						<td >2</td>  
+						<td >李四</td>  
+						<td >786a4ef786a4ef</td>  
+                        <td ><input  name="ckb" type="checkbox"/></td>  
                     </tr> 
                 </table>
+				<a href="#" data-role='button' id="delete" data-icon="delete" data-inline="true" >删除</a>
         	</div>
         </div>
 		<script type="text/javascript" src="cordova.js"></script>
@@ -43,5 +48,6 @@
 		<script type="text/javascript" charset="utf-8" src="phonegap-toast.js"></script>
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+		<script type="text/javascript" src="js/deleteUser.js"></script>
     </body>
 </html>

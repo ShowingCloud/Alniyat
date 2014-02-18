@@ -1,29 +1,38 @@
 $(document).ready(function(){
 	$('#userInfo').click(function(){
-		$.mobile.changePage("userInfo.html");
+		$(this).prop('href', "userInfo.html");
+		//$.mobile.changePage("userInfo.html");
 	});
 	$('#lockInfo').click(function(){
-		$.mobile.changePage("lockInfo.html");
+		$(this).prop('href', "lockInfo.html");
+		//$.mobile.changePage("lockInfo.html");
 	});
 	$('#unlockRecords').click(function(){
-		$.mobile.changePage("unlockRecords.html");
+		$(this).prop('href', "unlockRecords.html");
+		//$.mobile.changePage("unlockRecords.html");
 	});
 	$('#illegalRecords').click(function(){
-		$.mobile.changePage("illegalRecords.html");
+		$(this).prop('href', "illegalRecords.html");
+		//$.mobile.changePage("illegalRecords.html");
 	});
 	$('#modifyInfo').click(function(){
-		$.mobile.changePage("modifyInfo.html");
+		$(this).prop('href', "modifyInfo.html");
+		//$.mobile.changePage("modifyInfo.html");
 	});
-	$('#addUser').click(function(){
-		$.mobile.changePage("addUser.html");
+	$('#addUser').click(function(e){
+		$(this).prop('href', "addUser.html");
+		//$.mobile.changePage("addUser.html");
 	});
 	$('#deleteUser').click(function(){
-		$.mobile.changePage("deleteUser.html");
+		$(this).prop('href', "deleteUser.html");
+		//$.mobile.changePage("deleteUser.html");
 	});
 	$('#otherSetup').click(function(){
-		$.mobile.changePage("otherSetup.html");
+		$(this).prop('href', "otherSetup.html");
+		//$.mobile.changePage("otherSetup.html");
 	});
 	$('#more').click(function(){
-		$.mobile.changePage("more.html");
+		$(this).prop('href', "more.html");
+		//$.mobile.changePage("more.html");
 	});
 });
