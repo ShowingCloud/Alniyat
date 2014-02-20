@@ -39,6 +39,13 @@ module.exports = [
         "merges": [
             "navigator.notification"
         ]
+    },
+    {
+        "file": "plugins/com.phonegap.plugins.barcodescanner/www/barcodescanner.js",
+        "id": "com.phonegap.plugins.barcodescanner.barcodescanner",
+        "clobbers": [
+            "plugins.barcodeScanner"
+        ]
     }
 ]
 });

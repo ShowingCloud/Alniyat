@@ -14,11 +14,19 @@ E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\chariotsolutions\toast\plugin\ToastPlugin.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\Alniyat.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\BuildConfig.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$array.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$attr.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$color.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$dimen.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$drawable.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$id.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$layout.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$menu.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$raw.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$string.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R$xml.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\example\entranceGuard\R.class \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\com\phonegap\plugins\barcodescanner\BarcodeScanner.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\api\Dummy.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\batterystatus\BatteryListener$1.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\batterystatus\BatteryListener.class \
@@ -42,3 +50,4 @@ E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\di
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\dialogs\Notification.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\classes\org\apache\cordova\vibration\Vibration.class \
 E:\PhoneGap3.1\entranceGuard\platforms\android\bin\dexedLibs\cordova-3.1.0-1e0d44be1a662560c4d82558e09ca4fd.jar \
+E:\PhoneGap3.1\entranceGuard\platforms\android\bin\dexedLibs\com.google.zxing.client.android.captureactivity-d9c68ccf553c972f4269453fd75ff984.jar \

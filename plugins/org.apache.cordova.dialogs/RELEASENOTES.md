@@ -29,7 +29,7 @@
 * [CB-4592] [Blackberry10] Added beep support
 * [CB-4752] Incremented plugin version on dev branch.
 
-### 0.2.3 (Oct 28, 2013)
+ ### 0.2.3 (Oct 28, 2013)
 * CB-5128: added repo + issue tag to plugin.xml for dialogs plugin
 * new plugin execute arguments supported
 * new plugin style
@@ -41,3 +41,19 @@
 * fixed "exec" calls addedd css, but not working yet
 * first (blind) try
 * [CB-4915] Incremented plugin version on dev branch.
+
+ 
+### 0.2.4 (Dec 4, 2013)
+* add ubuntu platform
+* 1. Added amazon-fireos platform. 2. Change to use amazon-fireos as a platform if user agent string contains 'cordova-amazon-fireos'.
+* added beep funtionality using ms-winsoundevent:Notfication.Default
+
+### 0.2.5 (Jan 02, 2014)
+* CB-4696 Fix compile error for Xcode 4.5.
+* CB-5658 Add doc/index.md for Dialogs plugin
+* CB-3762 Change prompt default to empty string
+* Move images from css to img
+
+### 0.2.6 (Feb 05, 2014)
+* no need to recreate the manifest.webapp file after each `cordova prepare` for FFOS
+* FFOS description added

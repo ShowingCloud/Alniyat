@@ -8,11 +8,21 @@
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
 		<title>PhoneGap 门禁</title>
     </head>
     <body>
-		<div data-role="page" id="initPage" style="background-image: url(./img/bg.png);"  data-inset="true">
-			<a style="margin-top: 80%;margin-left: 35%;" href="" data-role="button" rel="external" id='init' data-inline="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		<div data-role="page" id="initPage" style="background-image: url(./img/bg.png);"  data-inset="true" data-theme="e">
+			<a style="margin-top: 80%;margin-left: 30%;" href="" data-role="button" rel="external" id='init' data-inline="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<!--以下是登录弹框输入密码-->
+			<div id="login_light" class="my_dialog" data-theme="e">
+				<h1 style="text-align:center; margin-top: -10px; ">登录</h1>
+				<label  align="center" for="pass">密码</label>
+				<input type="password" name="pass" id="pass" value=""/>
+				<a data-icon='check' data-role='button' href='#'   rel="external" id='login' style="float:left; margin-right: 5px;">登录</a>
+				<a data-icon='delete' data-role='button' href='#'  id='cancel' style="float:left;" >取消</a>
+			</div>
+			<div id="login_fade" class="black_overlay"></div>
 		</div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" charset="utf-8" src="phonegap-nfc.js"></script>
@@ -20,8 +30,9 @@
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile.simpledialog2.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
         <script type="text/javascript" src="js/storage.js"></script>
-        <script type="text/javascript" src="js/dialog.js"></script>
+        <!--<script type="text/javascript" src="js/dialog.js"></script>-->
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
