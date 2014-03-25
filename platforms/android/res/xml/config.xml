@@ -4,7 +4,6 @@
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <access origin="*" />
     <preference name="loglevel" value="DEBUG" />
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
@@ -15,9 +14,6 @@
     <feature name="Toasty">
         <param name="android-package" value="com.chariotsolutions.toast.plugin.ToastPlugin" />
     </feature>
-    <feature name="BarcodeScanner">
-        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
-    </feature>
     <feature name="Battery">
         <param name="android-package" value="org.apache.cordova.batterystatus.BatteryListener" />
     </feature>
@@ -27,10 +23,18 @@
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
+    <name>Alniyat</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
     <author email="dev@callback.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
     <content src="index.html" />
+    <access origin="*" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
 </widget>

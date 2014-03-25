@@ -1,4 +1,4 @@
-cordova.define("com.chariotsolutions.toast.plugin.Toasty", function(require, exports, module) {/*global cordova, module*/
+cordova.define("com.chariotsolutions.toast.plugin.Toasty", function(require, exports, module) { /*global cordova, module*/
 module.exports = {
     showShort: function (message, win, fail) {
         cordova.exec(win, fail, "Toasty", "show_short", [message]);
@@ -12,4 +12,5 @@ module.exports = {
         cordova.exec(win, fail, "Toasty", "cancel", []);
     }
 };
+
 });

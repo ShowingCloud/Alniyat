@@ -18,10 +18,10 @@
 			$('#light').css({'display': 'none'});
 		}else if(password === ""){
 			$('#pass').val('');
-			alert("请输入密码！");
+			notifyUser("请输入密码！");
 		}else{
 			$('#pass').val('');
-			alert("密码错误请重新输入！");
+			notifyUser("密码错误请重新输入！");
 		}
 	});
 	$('#cancel').click(function(e){

@@ -1,78 +1,79 @@
 ﻿$(document).ready(function(){
-	var adminPass = '';
+	//var adminPass = '';
 	$('#userInfo').click(function(e){
-		adminPass = 'a';
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "userInfo.html");
+		//adminPass = 'a';
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "userInfo.html");
 		//$.mobile.changePage("userInfo.html"); 
 	});
 	$('#lockInfo').click(function(e){
-		adminPass = 'b';
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "lockInfo.html");
+		//adminPass = 'b';
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "lockInfo.html");
 		//$.mobile.changePage("lockInfo.html");
 	});
 	$('#unlockRecords').click(function(e){
-		adminPass = 'c';
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "unlockRecords.html");
+		//adminPass = 'c';
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "unlockRecords.html");
 		//$.mobile.changePage("unlockRecords.html");
 	});
 	$('#illegalRecords').click(function(e){
-		adminPass = 'd';
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "illegalRecords.html");
+		//adminPass = 'd';
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "illegalRecords.html");
 		//$.mobile.changePage("illegalRecords.html");
 	});
 	$('#modifyInfo').click(function(e){
-		adminPass = 'e';
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "modifyInfo.html");
+		//adminPass = 'e';
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "modifyInfo.html");
 		//$.mobile.changePage("modifyInfo.html");
 	});
 	$('#addUser').click(function(e){
-		adminPass = 'f';
+		//adminPass = 'f';
 		//阻止默认事件行为的触发
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "addUser.html");
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "addUser.html");
 		//$.mobile.changePage("addUser.html");
 	});
 	$('#deleteUser').click(function(e){
-		adminPass = 'g';
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "deleteUser.html");
+		//adminPass = 'g';
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "deleteUser.html");
 		//$.mobile.changePage("deleteUser.html");
 	});
 	$('#otherSetup').click(function(e){
-		adminPass = 'h';
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "otherSetup.html");
+		//adminPass = 'h';
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "otherSetup.html");
 		//$.mobile.changePage("otherSetup.html");
 	});
 	$('#more').click(function(e){
-		adminPass = 'i';
-		e.preventDefault();
-		$('#admin_fade').css({'display': 'block'});
-		$('#admin_light').css({'display': 'block'});
-		//$(this).prop('href', "more.html");
+		//adminPass = 'i';
+		//e.preventDefault();
+		//$('#admin_fade').css({'display': 'block'});
+		//$('#admin_light').css({'display': 'block'});
+		$(this).prop('href', "more.html");
 		//$.mobile.changePage("more.html");
 	});
+	/*
 	//密码检测,通讯后为发送密码到门锁
 	$('#ok').click(function(){
 		//本地测试用管理员密码为确定在本地为admin
@@ -124,4 +125,5 @@
 		$('#admin_fade').css({'display': 'none'});
 		$('#admin_light').css({'display': 'none'});
 	});
+	*/
 });

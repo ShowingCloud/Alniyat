@@ -16,29 +16,29 @@
 				<h1>门禁</h1>
 			</div><!--/header-->
 			<div data-role="content" data-theme="e" id="adminContent" style='margin-left:5%'>
-				<div class="ui-grid-b" style="margin-top:10%">
-					<div class="ui-block-a"><a href="" id='userInfo'   rel="external"><img src="img/search-user.png" width="80%" /><p align="center" >用户信息</p></a></div>
-					<div class="ui-block-b"><a href="" id='lockInfo'  rel="external"><img src="img/search-detection.png"  width="80%"/><p align="center" >门锁信息</p></a></div>
-					<div class="ui-block-c"><a href="" id='unlockRecords'  rel="external"><img src="img/search-records.png"  width="80%"/><p align="center" >开门记录</p></a></div>
+				<div class="ui-grid-b" >
+					<div class="ui-block-a"><a href="" id='userInfo'   rel="external"><img src="img/search-user.png" width="80%" /><p style="padding-left:8px;">用户信息</p></a></div>
+					<div class="ui-block-b"><a href="" id='lockInfo'  rel="external"><img src="img/search-detection.png"  width="80%"/><p style="padding-left:8px;" >门锁信息</p></a></div>
+					<div class="ui-block-c"><a href="" id='unlockRecords'  rel="external"><img src="img/search-records.png"  width="80%"/><p style="padding-left:8px;" >开门记录</p></a></div>
 				</div>
 				<div class="ui-grid-b">
-					<div class="ui-block-a"><a href="" id='illegalRecords'  rel="external"><img src="img/error.png"  width="80%"/><p align="center" >非法记录</p></a></div>
-					<div class="ui-block-b"><a href="" id='modifyInfo'   rel="external"><img src="img/setup.png"  width="80%"/><p align="center" >修改信息</p></a></div>
-					<div class="ui-block-c"><a href="" id="addUser" rel="external"><img src="img/setup.png"  width="80%"/><p align="center" >增加用户</p></a></div>
+					<div class="ui-block-a"><a href="" id='illegalRecords'  rel="external"><img src="img/error.png"  width="80%"/><p style="padding-left:8px;" >非法记录</p></a></div>
+					<div class="ui-block-b"><a href="" id='modifyInfo'   rel="external"><img src="img/setup.png"  width="80%"/><p style="padding-left:8px;" >修改信息</p></a></div>
+					<div class="ui-block-c"><a href="" id="addUser" rel="external"><img src="img/setup.png"  width="80%"/><p style="padding-left:8px;" >增加用户</p></a></div>
 				</div>
 				<div class="ui-grid-b">
-					<div class="ui-block-a"><a href="" id='deleteUser'   rel="external"><img src="img/error.png"  width="80%"/><p align="center" >删除用户</p></a></div>
-					<div class="ui-block-b"><a href="" id='otherSetup'   rel="external"><img src="img/setup.png"  width="80%"/><p align="center" >其他设置</p></a></div>
-					<div class="ui-block-c"><a href="" id='more'  rel="external"><img src="img/setup.png"  width="80%"/><p align="center" >....</p></a></div>
+					<div class="ui-block-a"><a href="" id='deleteUser'   rel="external"><img src="img/error.png"  width="80%"/><p style="padding-left:8px;" >删除用户</p></a></div>
+					<div class="ui-block-b"><a href="" id='otherSetup'   rel="external"><img src="img/setup.png"  width="80%"/><p style="padding-left:8px;" >其他设置</p></a></div>
+					<div class="ui-block-c"><a href="" id='more'  rel="external"><img src="img/setup.png"  width="80%"/><p style="padding-left:8px;" >....</p></a></div>
 				</div>
 				<!--以下是登录弹框输入密码-->
-			<div id="admin_light" class="my_dialog" data-theme="e">
-				<h1 style="text-align:center; margin-top: -10px; ">密码</h1>
-				<input type="password" name="pass" id="pass" value=""/>
-				<a data-icon='check' data-role='button' href='#'   rel="external" id='ok' style="float:left; margin-right: 5px;">确定</a>
-				<a data-icon='delete' data-role='button' href='#'  id='cancel' style="float:left;" >取消</a>
-			</div>
-			<div id="admin_fade" class="black_overlay"></div>
+				<div id="admin_light" class="admin_dialog" data-theme="e">
+					<h1 style="text-align:center; margin-top: -10px; ">密码</h1>
+					<input type="password" name="pass" id="pass" value=""/>
+					<a data-icon='check' data-role='button' href='#'   rel="external" id='ok' style="float:left; margin-right: 5px;">确定</a>
+					<a data-icon='delete' data-role='button' href='#'  id='cancel' style="float:left;" >取消</a>
+				</div>
+				<div id="admin_fade" class="black_overlay"></div>
 			</div><!--/right page content-->
 			<div data-role="footer" data-mini="true" data-position="fixed" data-id="unifiedFooter" data-theme='e'>
 				<div data-role="navbar" > 

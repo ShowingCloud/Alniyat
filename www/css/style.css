@@ -1,4 +1,13 @@
-
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+    font-family: helvetica;    
+     -webkit-backface-visibility: hidden;/* for иафа */
+}
 a {
 	text-decoration: none;
 }

@@ -47,5 +47,16 @@ module.exports = [
             "plugins.barcodeScanner"
         ]
     }
-]
+];
+module.exports.metadata = 
+// TOP OF METADATA
+{
+    "com.chariotsolutions.nfc.plugin": "0.4.7",
+    "com.chariotsolutions.toast.plugin": "1.1.1",
+    "org.apache.cordova.battery-status": "0.2.4",
+    "org.apache.cordova.dialogs": "0.2.6",
+    "org.apache.cordova.vibration": "0.3.7",
+    "com.phonegap.plugins.barcodescanner": "0.6.0"
+}
+// BOTTOM OF METADATA
 });

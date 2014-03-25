@@ -15,11 +15,12 @@
 		<!--所有用户信息-->
         <div data-role="page" id="addUser"  data-theme="e" >
             <div data-role="header" data-theme="e">
-				<a href="admin.html" rel="external" data-icon="back"  data-inline="true">返回</a>
+				<a href="admin.html" rel="external" data-icon="back"  data-iconpos="notext" data-inline="true">返回</a>
                 <h1>添加用户</h1>
+				<a href="#" id="saveAdd" data-icon="check"  data-iconpos="notext" data-inline="true" >保存</a>
             </div>
             <div data-role="content" data-inset="true" data-theme="e">
-                <table id="userTable" style="width:100%; text-align:center;" border="1">
+                <table id="addUserTable" style="width:100%; text-align:center;" border="1">
                     <caption>用户信息</caption>  
 					<thead>
                     <tr>
@@ -37,7 +38,6 @@
 					</tbody>
                 </table>
 				<a href="#" data-role='button' id="plus" data-icon="plus" data-inline="true" >添加</a>
-				<a href="#" data-role='button' id="saveAdd" data-icon="check" data-inline="true" >保存</a>
         	</div>
 			<div id="light" class="white_content">
 				<h1 style="text-align:center; margin-top: -10px; ">添加用户</h1>
